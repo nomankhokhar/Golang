@@ -105,15 +105,15 @@ func main() {
 	// fmt.Println(len(a))
 	// fmt.Println(b)
 
-	shopinCart := map[string]int{
-		"KeyBoard": 100,
-		"Mouse":    50,
-		"Laptop":   1000,
-	}
+	// shopinCart := map[string]int{
+	// 	"KeyBoard": 100,
+	// 	"Mouse":    50,
+	// 	"Laptop":   1000,
+	// }
 
-	for k, v := range shopinCart {
-		fmt.Println(k, v)
-	}
+	// for k, v := range shopinCart {
+	// 	fmt.Println(k, v)
+	// }
 
 	// _, ok := shopinCart["KeyBoard"]
 	// if ok {
@@ -200,6 +200,9 @@ func main() {
 	// for i, j := 0, 0; i < 5; i, j = i+1, j+1 {
 	// 	fmt.Println(i, j)
 	// }
+
+	fmt.Println("Hello")
+
 }
 
 type Processor struct {
