@@ -5,8 +5,6 @@ import "fmt"
 func main() {
 	fmt.Println("Welcome to Differ")
 
-
-
 	defer fmt.Println("One")
 	defer fmt.Println("World")
 	defer fmt.Println("Hello")
