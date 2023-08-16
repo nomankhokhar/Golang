@@ -17,6 +17,7 @@ func main() {
 
 	// var wrapData map[string]string      // this will take only string value in both key and value
 	var wrapData map[string]interface{} // this will take only string value in key but tak any value in value
+	// wrapData := make(map[string]interface{})
 
 	data := `{"name": "Noman Ali", "description" : 54554 , "phone" : 3122652}`
 
@@ -64,7 +65,7 @@ func main() {
 
 	fmt.Println(wrapData)
 
-	// Marshell the Data
+	// Marshell the Data make json
 
 	type Person struct {
 		Name string
@@ -81,7 +82,7 @@ func main() {
 
 	fmt.Println(string(jsonData))
 
-	// UnMarshalling the DATA
+	// UnMarshalling the DATA to store data into MAP or Struct
 
 	jsonDataMar := []byte(`{"description":54554,"name":"Noman Ali","phone":3122652}`)
 	var personMar Person
@@ -92,5 +93,5 @@ func main() {
 		fmt.Println(errMar)
 	}
 
-	fmt.Println(person)
+	fmt.Println(personMar)
 }

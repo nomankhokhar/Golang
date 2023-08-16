@@ -5,6 +5,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func ptr(ptr int) *int {
@@ -40,7 +41,7 @@ func main() {
 
 	fmt.Println(b, c)
 
-	switch t:= a.(type) {
+	switch t := a.(type) {
 	case int64:
 		fmt.Println("Type is int : ", t)
 	case float64:
@@ -81,27 +82,27 @@ func main() {
 	fmt.Println(i, j, k)
 
 	// Arrays in Golang
-		var amount [3]int = [3]int{10, 20, 30}
-		amout := [...]int{10, 20, 30, 45, 34, 53, 4, 534, 5, 34, 53, 45, 34, 53, 4}
-		b := amout[2:5]
-		fmt.Printf("Amuont: %v\n", amount)
-		fmt.Printf("Amuont: %v\n", amout)
-		fmt.Printf("Amuont: %v\n", b)
+	var amount [3]int = [3]int{10, 20, 30}
+	amout := [...]int{10, 20, 30, 45, 34, 53, 4, 534, 5, 34, 53, 45, 34, 53, 4}
+	b := amout[2:5]
+	fmt.Printf("Amuont: %v\n", amount)
+	fmt.Printf("Amuont: %v\n", amout)
+	fmt.Printf("Amuont: %v\n", b)
 
-		var TwoDArray [3][3]int = [3][3]int{
-			[3]int{1, 0, 0},
-			[3]int{1, 1, 0},
-			[3]int{1, 0, 1},
-		}
+	var TwoDArray [3][3]int = [3][3]int{
+		[3]int{1, 0, 0},
+		[3]int{1, 1, 0},
+		[3]int{1, 0, 1},
+	}
 
-		var Slice []float64 = []float64{1.2, 3, 4, 4}
-		fmt.Println(TwoDArray)
-		fmt.Println(Slice)
+	var Slice []float64 = []float64{1.2, 3, 4, 4}
+	fmt.Println(TwoDArray)
+	fmt.Println(Slice)
 
 	var a []int = make([]int, 3)
 	a[0] = 4
 	a[1] = 14
-	a [2] = 44
+	a[2] = 44
 
 	var b []int = append(a, 5)
 	fmt.Println(len(a))
@@ -138,7 +139,7 @@ func main() {
 
 	fmt.Println(shopinCart)
 
-	Structure of Struct
+	// Structure of Struct
 
 	student := Student{
 		"Noman Ali",
@@ -169,7 +170,7 @@ func main() {
 
 	Pc := Computer{}
 
-	Pc.cores = 12
+	Pc.Processor.cores = 12
 	Pc.memoryCapacity = 1000
 	Pc.memoryType = "SSD"
 	Pc.price = 1212
@@ -209,7 +210,7 @@ func main() {
 		fmt.Println(index, value, string(value))
 	}
 
-	String Package
+	// String Package
 
 	strLOL := "@something Matter+-@"
 
@@ -226,7 +227,7 @@ func main() {
 		fmt.Println(str)
 	}("Hello Noman Ali")
 
-	Closure Function With Company Example
+	// Closure Function With Company Example
 
 	val := company()
 
@@ -236,9 +237,10 @@ func main() {
 	fmt.Println(val())
 
 	s := simple()
+
 	fmt.Println(s(3, 4))
 
-	Concurrency vs paralellisom
+	// Concurrency vs paralellisom
 	go printkryrr()
 
 	custome.ShowName()
