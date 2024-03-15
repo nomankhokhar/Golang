@@ -44,7 +44,7 @@ func main() {
 
 	// Unicode Package All these Return Boolean values
 	fmt.Println(unicode.IsLetter(str[0]))
-  fmt.Println(unicode.IsSpace(str[0]))
+  	fmt.Println(unicode.IsSpace(str[0]))
 	fmt.Println(unicode.IsNumber(str[0]))
 	fmt.Println(unicode.IsLower(str[0]))
 	fmt.Println(unicode.IsPunct(str[0]))
@@ -54,18 +54,18 @@ func main() {
 	// compare(), Contains(), HasPrefix(), Index()
 	Replace(s, old, new, n)
 	Split(s, sep, n)
-  SplitAfter(s, sep, n)
-  SplitBefore(s, sep, n)
-  ToLower(s)
-  ToUpper(s)
-  Trim(s)
-  TrimLeft(s)
-  TrimRight(s)
-  TrimSpace(s)
+	SplitAfter(s, sep, n)
+	SplitBefore(s, sep, n)
+	ToLower(s)
+	ToUpper(s)
+	Trim(s)
+	TrimLeft(s)
+	TrimRight(s)
+	TrimSpace(s)
 
 	// Strconv Package
-	  Atoi(s) //-> convert string into int
-	  Atof(s) //-> convert string into float
+	Atoi(s) //-> convert string into int
+	Atof(s) //-> convert string into float
     Atoi64(s) //-> convert string into int64
     Atof64(s) //-> convert string into float64
     Atob(s) //-> convert string into bool
@@ -143,10 +143,10 @@ func main() {
 
 }
 
-	func foo() *int {
-		x:= 1
-		return &x
-	}
+func foo() *int {
+	x:= 1
+	return &x
+}
 package main
 
 import (
