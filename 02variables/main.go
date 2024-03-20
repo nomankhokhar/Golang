@@ -1,35 +1,33 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 const LoginToken = "Noman Ali"
 
 func main() {
 
 	var username string = "Noman Ali"
-	fmt.Println(username)
+	fmt.Println("String", username)
 	fmt.Printf("%T\n", username)
 
 	var isloggedIn bool = false
-	fmt.Println(isloggedIn)
+	fmt.Println("Bool", isloggedIn)
 	fmt.Printf("%T\n", isloggedIn)
 
 	var smallVal uint8 = 255
-	fmt.Println(smallVal)
+	fmt.Println("Unsigned 8 Bit Value", smallVal)
 	fmt.Printf("%T\n", smallVal)
 
 	var floating float64 = 255.44554455
-	fmt.Println(floating)
+	fmt.Println("Floating Point Value", floating)
 	fmt.Printf("%T\n", floating)
 
 	var anotherVeriable int
-	fmt.Println(anotherVeriable)
+	fmt.Println("Integer Value ", anotherVeriable)
 	fmt.Printf("%T\n", anotherVeriable)
 
 	numOfUser := 300
-	fmt.Println(numOfUser)
+	fmt.Println("Num of User", numOfUser)
 
 	fmt.Println(LoginToken)
 }
