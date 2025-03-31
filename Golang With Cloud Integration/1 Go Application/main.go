@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"net/http"
@@ -54,13 +55,36 @@ func (m *MySlowReader) Read(p []byte) (n int, err error) {
 }
 
 func main() {
-	args := os.Args
 
-	if len(args) < 2 {
-		fmt.Println("Usage: ./http-get <argument>")
+	var (
+		requestURL string
+		password   string
+		parsedURL  *url.URL
+		err        error
+	)
+
+	// var to store value , flag name , default value, description
+	flag.StringVar(&requestURL, "url", "", "url to access")
+	flag.StringVar(&password, "password", "", "url to access")
+	// Use to parse value like url, password to var requestURL and password
+	flag.Parse()
+
+	if parsedURL, err = url.ParseRequestURI(requestURL); err != nil {
+		fmt.Printf("Validation error: URL is not valid %s", err)
 		os.Exit(1)
 	}
-	res, err := doRequest(args[1])
+
+	if password != "" {
+		URL := parsedURL.Scheme + "://" + parsedURL.Host + "/login"
+		token, err := DoLoginRequest(URL, password)
+		if requestError, ok := err.(*RequestError); ok {
+			fmt.Printf("Error: %s (HTTP Code %d, Body: %s)\n", requestError.Err, requestError.HTTPCode, requestError.Body)
+		}
+		fmt.Printf("Error %s/n", token)
+		os.Exit(1)
+	}
+
+	res, err := doRequest(parsedURL.String())
 
 	if err != nil {
 		if requestError, ok := err.(*RequestError); ok {
