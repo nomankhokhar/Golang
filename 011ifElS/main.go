@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Welcome to If Else")
+	fmt.Println("Welcome to IfElse")
 
 	loginCount := 2
 
@@ -16,23 +16,25 @@ func main() {
 	}
 
 	fmt.Println(result)
-	if num := 3; num < 10 {
-		fmt.Println("Num is less than 10")
+
+	if num := 3; num < 10 && num > 1 {
+		fmt.Println("Num is between 1 and 10")
 	}
 
-	arr := []string{"Nomam", "Ali", "JS", "Rust", "Golang"}
+	// This is Slice
+	arr := []string{"Noman", "Ali", "JS", "Rust", "Golang"}
 
-	for index, val := range arr {
-		fmt.Println(index, val)
+	for index, value := range arr {
+		fmt.Println(index, value)
 	}
 
+	// This is Map
 	myMap := make(map[string]interface{})
 	myMap["name"] = "Noman"
-	myMap["age"] = 21
-	myMap["job"] = "CS"
+	myMap["age"] = 30
+	myMap["isAdmin"] = true
 
 	for index, value := range myMap {
 		fmt.Println(index, value)
 	}
-
 }
