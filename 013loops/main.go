@@ -5,33 +5,30 @@ import "fmt"
 func main() {
 	fmt.Println("Welcome to Loops")
 
-	// days := []string{"Sun", "Mon","Tue","Wed","Thur","Fri","Sat"}
+	days := []string{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"}
 
-	// for i := 0; i < len(days); i++ {
-	// 	fmt.Println(days[i])
-	// }
+	// This is Standard For Loop
+	for index := 0; index < len(days); index++ {
+		fmt.Println(days[index])
+	}
 
-	// for i := range days {
-	// 	fmt.Println(days[i])
-	// }
-
-	// for index ,value := range days {
-	// 	fmt.Println(index, value)
-	// }
+	// This is Go Style For Loop
+	for index, value := range days {
+		fmt.Println(index, value)
+	}
 
 	rougueValue := 1
 
 	for rougueValue < 10 {
-
 		if rougueValue == 5 {
 			rougueValue++
 			goto loc
 		}
-		break
 		fmt.Println(rougueValue)
 		rougueValue++
-	}
-loc:
-	fmt.Println("Loc lable is here")
 
+	}
+
+loc:
+	fmt.Println("Loc label is here", rougueValue)
 }
