@@ -9,13 +9,13 @@ type User struct {
 	Age    int
 }
 
-func (u User) GetStatus() {
-	fmt.Println("Is user active : ", u.Status)
+func (u *User) GetStatus() {
+	fmt.Println(u.Status)
 }
 
-func (u User) GetNewMail() {
-	u.Email = "a@gmail.com"
-	fmt.Println("New mail is :", u.Email)
+func (u *User) GetNewMail() {
+	u.Name = "Ali"
+	fmt.Println(u.Name)
 }
 
 func main() {
@@ -31,4 +31,6 @@ func main() {
 
 	Noman.GetStatus()
 	Noman.GetNewMail()
+
+	fmt.Println(Noman)
 }
