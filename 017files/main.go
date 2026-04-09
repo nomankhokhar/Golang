@@ -8,33 +8,31 @@ import (
 )
 
 func main() {
-	fmt.Println("Velcome to Files\n")
+	fmt.Println("Velkome to File Reading")
 
 	content := "Noman Ali is a Nil Student"
 
-	file , err := os.Create("./nomanFile.txt")
+	file, err := os.Create("./nomanFile.txt")
 	checkNilError(err)
-
 	defer file.Close()
 
-	lenght , err := io.WriteString(file, content)
+	length, err := io.WriteString(file, content)
 	checkNilError(err)
-	fmt.Println("Data lenght is : ", lenght)
+
+	fmt.Println("Data length is : ", length)
+
 	readFile("./nomanFile.txt")
 }
 
-func checkNilError (err error){
+func checkNilError(err error) {
 	if err != nil {
 		panic(err)
 	}
 }
 
-func readFile(filename string){
-	dataBytes , err := ioutil.ReadFile(filename)
+func readFile(filename string) {
+	dataBytes, err := ioutil.ReadFile(filename)
+	checkNilError(err)
 
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println("File data is : " , string(dataBytes))
+	fmt.Println("File data is : ", string(dataBytes))
 }
