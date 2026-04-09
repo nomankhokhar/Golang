@@ -10,6 +10,12 @@ const (
 	forth  = 0
 )
 
+const (
+	A = iota // 0
+	B = 100  // 100 (iota is 1)
+	C = iota // 2   (iota resumed its count)
+)
+
 func main() {
 	fmt.Println("welcome to function")
 
@@ -17,6 +23,7 @@ func main() {
 	fmt.Println(preOrder(1, 2, 3, 4, 5, 6, 7))
 	fmt.Println(testAdd(1, 2))
 	fmt.Println(first, second, third, forth)
+	fmt.Println(A, B, C)
 }
 
 func Salaam() {
