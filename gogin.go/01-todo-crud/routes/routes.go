@@ -7,16 +7,16 @@ import (
 )
 
 // SetupRouter initialises the Gin engine and registers all routes
-func SetupRouter(tc *controllers.TodoController) *gin.Engine {
+func SetupRouter(handler controllers.TodoHandler) *gin.Engine {
 	r := gin.Default()
 
 	api := r.Group("/api/v1")
 	{
-		api.GET("/todos", tc.GetAllTodos)
-		api.GET("/todos/:id", tc.GetTodoByID)
-		api.POST("/todos", tc.CreateTodo)
-		api.PUT("/todos/:id", tc.UpdateTodo)
-		api.DELETE("/todos/:id", tc.DeleteTodo)
+		api.GET("/todos", handler.GetAllTodos)
+		api.GET("/todos/:id", handler.GetTodoByID)
+		api.POST("/todos", handler.CreateTodo)
+		api.PUT("/todos/:id", handler.UpdateTodo)
+		api.DELETE("/todos/:id", handler.DeleteTodo)
 	}
 
 	return r
