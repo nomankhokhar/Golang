@@ -1,36 +1,21 @@
-package main
+package controller
 
 import (
-	"fmt"
 	"net/http"
+	"simple-api/model"
 
 	"github.com/gin-gonic/gin"
 )
 
-type api struct {
-	Name  string `json:"name"`
-	Email string `json:"email"`
-}
+var data model.Api
 
-var data api
-
-func main() {
-	fmt.Println("Welcome to Golang->API")
-	r := gin.Default()
-	r.GET("/get", getValues)
-	r.POST("/post", postValues)
-	r.PUT("/put", putValues)
-	r.DELETE("/delete", deleteValues)
-	r.Run(":3000")
-}
-
-func getValues(c *gin.Context) {
+func GetValues(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": data,
 	})
 }
 
-func postValues(c *gin.Context) {
+func PostValues(c *gin.Context) {
 	err := c.BindJSON(&data)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{
@@ -43,7 +28,7 @@ func postValues(c *gin.Context) {
 	})
 }
 
-func putValues(c *gin.Context) {
+func PutValues(c *gin.Context) {
 	err := c.BindJSON(&data)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{
@@ -56,8 +41,8 @@ func putValues(c *gin.Context) {
 	})
 }
 
-func deleteValues(c *gin.Context) {
-	data = api{}
+func DeleteValues(c *gin.Context) {
+	data = model.Api{}
 	c.JSON(http.StatusOK, gin.H{
 		"message": data,
 	})
