@@ -1,44 +1,67 @@
 package main
 
-type BrowserHistory struct {
-	historyStack []string
-	forwardStack []string
+type StorageManager struct {
+	warehouseQueue  []string
+	inspectionStack []string
 }
 
-// Visit adds url to history and clears forward stack
-func (b *BrowserHistory) Visit(url string) {
-	b.historyStack = append(b.historyStack, url)
-	b.forwardStack = nil // clear forward history on new visit
+// StoreItem adds item to queue and stack
+func (s *StorageManager) StoreItem(item string) {
+
+	// Add item to stack
+	s.inspectionStack = append(s.inspectionStack, item)
+
+	// Add item to queue
+	s.warehouseQueue = append(s.warehouseQueue, item)
 }
 
-// Back moves current page to forwardStack, returns the previous page or nil
-func (b *BrowserHistory) Back() *string {
-	if len(b.historyStack) <= 1 {
+// RetrieveItem gets FIRST item from queue (FIFO)
+func (s *StorageManager) RetrieveItem() *string {
+
+	// Queue is empty
+	if len(s.warehouseQueue) == 0 {
 		return nil
 	}
-	popUrl := b.historyStack[len(b.historyStack)-1]
-	b.historyStack = b.historyStack[:len(b.historyStack)-1]
-	b.forwardStack = append(b.forwardStack, popUrl)
-	return &popUrl
+
+	// Get first item
+	firstItem := s.warehouseQueue[0]
+
+	// Remove first item
+	s.warehouseQueue = s.warehouseQueue[1:]
+
+	return &firstItem
 }
 
-// Forward moves last forward page back to historyStack, returns it or nil
-func (b *BrowserHistory) Forward() *string {
-	if len(b.forwardStack) == 0 {
+// InspectItem gets LAST item from stack (LIFO)
+func (s *StorageManager) InspectItem() *string {
+
+	// Stack is empty
+	if len(s.inspectionStack) == 0 {
 		return nil
 	}
-	popUrl := b.forwardStack[len(b.forwardStack)-1]
-	b.forwardStack = b.forwardStack[:len(b.forwardStack)-1]
-	b.historyStack = append(b.historyStack, popUrl)
-	return &popUrl
+
+	// Get last item
+	lastItem := s.inspectionStack[len(s.inspectionStack)-1]
+
+	// Remove last item
+	s.inspectionStack = s.inspectionStack[:len(s.inspectionStack)-1]
+
+	return &lastItem
 }
 
-// GetHistory returns a copy of the history stack
-func (b *BrowserHistory) GetHistory() []string {
-	if len(b.historyStack) == 0 {
-		return nil
+// GetAllItems returns copy of queue
+func (s *StorageManager) GetAllItems() []string {
+
+	// Return empty slice if queue is empty
+	if len(s.warehouseQueue) == 0 {
+		return []string{}
 	}
-	copyHistoryStack := make([]string, len(b.historyStack))
-	copy(copyHistoryStack, b.historyStack)
-	return copyHistoryStack
+
+	// Make new slice
+	copyWarehouse := make([]string, len(s.warehouseQueue))
+
+	// Copy data
+	copy(copyWarehouse, s.warehouseQueue)
+
+	return copyWarehouse
 }
