@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pingpong;
+
+// Generated Go files will go into ./pb/ with package name "pb"
+option go_package = "./pb;pb";
+
+// Define our service
+service GameService {
+  // stream on both sides = bidirectional streaming (true ping-pong)
+  rpc PlayPingPong(stream Message) returns (stream Message);
+}
+
+// The only message we send back and forth
+message Message {
+  string text = 1;
+}
