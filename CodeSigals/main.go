@@ -5,24 +5,33 @@ import (
 )
 
 type DataStream struct {
-	data []map[string]string
+	data []map[string]int
 }
 
-// TODO: Update this method to retrieve and return the last element of the data stream
-func (ds DataStream) GetLast() map[string]string {
-	fmt.Println(ds.data)
-	return ds.data[len(ds.data)-1]
+func NewDataStream(data []map[string]int) *DataStream {
+	return &DataStream{data: data}
+}
+
+func (ds *DataStream) SliceToString(start, end int) string {
+	SliceOfStream := ""
+	for i := start; i < end; i++ {
+		SliceOfStream += fmt.Sprintf("{id: %d, value: %d }", ds.data[i]["id"], ds.data[i]["value"])
+
+		if i < end-1 {
+			SliceOfStream += ","
+		}
+	}
+	return SliceOfStream
 }
 
 func main() {
-	weatherData := []map[string]string{
-		{"time": "10:00AM", "temperature": "15", "wind": "NE"},
-		{"time": "11:00AM", "temperature": "17", "wind": "E"},
-		{"time": "12:00PM", "temperature": "19", "wind": "SE"},
+	data := []map[string]int{
+		{"id": 1, "value": 65},
+		{"id": 2, "value": 75},
+		{"id": 3, "value": 85},
+		{"id": 4, "value": 95},
 	}
 
-	stream := DataStream{data: weatherData}
-
-	firstData := stream.GetLast()
-	fmt.Printf("time: %s, temperature: %s, wind: %s\n", firstData["time"], firstData["temperature"], firstData["wind"])
+	sensorReadings := NewDataStream(data)
+	fmt.Println(sensorReadings.SliceToString(1, 3)) // Should print: {'id': 2, 'value': 75}, {'id': 3, 'value': 85}
 }
